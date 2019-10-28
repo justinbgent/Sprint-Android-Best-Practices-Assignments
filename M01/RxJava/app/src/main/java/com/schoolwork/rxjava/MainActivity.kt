@@ -49,19 +49,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 */
-/*
+/**/
 class MainActivity : AppCompatActivity() {
 
     lateinit var disposable: Disposable
-
-    //val obsJust = Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    val obsCreate: Observable<Int> = Observable.create { emitter ->
-        for(i in 1..10){
-            Thread.sleep(1000)
-            emitter.onNext(i)
-        }
-        emitter.onComplete()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,8 +73,8 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
-*/
 
+/*
 class MainActivity : AppCompatActivity() {
 
     lateinit var disposable: Disposable
@@ -127,4 +118,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
-/**/
+*/

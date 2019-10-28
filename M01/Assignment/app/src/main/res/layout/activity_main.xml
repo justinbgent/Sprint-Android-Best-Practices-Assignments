@@ -18,6 +18,7 @@
 
     <EditText
         android:id="@+id/edit_purchase_price"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -28,6 +29,7 @@
 
     <EditText
         android:id="@+id/edit_downpay"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -38,16 +40,18 @@
 
     <EditText
         android:id="@+id/edit_interest_rate"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:hint="Interest Rate"
+        android:hint="Interest Rate Per Year"
         app:layout_constraintTop_toBottomOf="@id/edit_downpay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/edit_loan_length"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
