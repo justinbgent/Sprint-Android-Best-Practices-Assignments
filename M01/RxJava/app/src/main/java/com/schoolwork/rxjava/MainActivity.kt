@@ -17,36 +17,38 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-//class MainActivity : AppCompatActivity() {
-//
-//    lateinit var disposable: Disposable
-//
-//    val obsJust = Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-//    val obsCreate: Observable<Int> = Observable.create { emitter ->
-//        for(i in 1..10){
-//            Thread.sleep(1000)
-//            emitter.onNext(i)
-//        }
-//        emitter.onComplete()
-//    }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//
-//        disposable = obsCreate.subscribeOn(Schedulers.computation())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({num->
-//            Log.i("MainActivity", "$num")
-//            text_view.text = "$num"}, {}, { text_view.text = "Completed!"})
-//    }
-//
-//    override fun onDestroy() {
-//        disposable.dispose()
-//        super.onDestroy()
-//    }
-//}
+/*
+class MainActivity : AppCompatActivity() {
 
+    lateinit var disposable: Disposable
+
+    val obsJust = Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val obsCreate: Observable<Int> = Observable.create { emitter ->
+        for(i in 1..10){
+            Thread.sleep(1000)
+            emitter.onNext(i)
+        }
+        Thread.sleep(1000)
+        emitter.onComplete()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        disposable = obsCreate.subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({num->
+            Log.i("MainActivity", "$num")
+            text_view.text = "$num"}, {}, { text_view.text = "Completed!"})
+    }
+
+    override fun onDestroy() {
+        disposable.dispose()
+        super.onDestroy()
+    }
+}
+*/
 /*
 class MainActivity : AppCompatActivity() {
 
@@ -125,3 +127,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
+/**/
