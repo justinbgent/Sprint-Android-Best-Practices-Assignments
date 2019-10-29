@@ -20,7 +20,7 @@ interface RetroCalls{
 object InitializeRetro{
     fun startRetroCalls(): RetroCalls {
         return Retrofit.Builder()
-            .baseUrl("https://qrng.anu.edu.au/API/")
+            .baseUrl("http://qrng.anu.edu.au/API/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()

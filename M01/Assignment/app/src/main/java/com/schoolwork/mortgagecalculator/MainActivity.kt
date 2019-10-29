@@ -2,6 +2,7 @@ package com.schoolwork.mortgagecalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -28,12 +29,20 @@ class MainActivity : AppCompatActivity() {
 
         val obsCombined = Observables.combineLatest(obsPurchasePrice, obsDownPayment, obsInterestRate, obsLoanLength){_,_,_,_ -> getAmortizedMortgagePayment()}
 
+        btn_1.setOnClickListener {
+            edit_interest_rate.setText(btn_1.text)
+        }
 
-        retrofitDisposable = InitializeRetro.startRetroCalls().getRandomNumbersArray(2, "uint8")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .onErrorReturn { RandomNums(arrayOf(1)) }
-            .subscribe { randomNums -> randomNums.data[0].toString()}
+        btn_2.setOnClickListener {
+            edit_interest_rate.setText(btn_2.text)
+        }
+
+        setRetroDisposable()
+
+        btn_generate.setOnClickListener {
+            progress_bar.visibility = View.VISIBLE
+            setRetroDisposable()
+        }
 
         disposable = obsCombined.observeOn(AndroidSchedulers.mainThread()).subscribe{result -> txt_answer.text = result.toString()}
     }
@@ -64,5 +73,37 @@ class MainActivity : AppCompatActivity() {
             val bot: Double = (1+interestPerMonth).pow(payPeriods)-1
             top/bot
         }
+    }
+
+    fun setRetroDisposable(){
+        retrofitDisposable = InitializeRetro.startRetroCalls().getRandomNumbersArray(2, "uint8")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .onErrorReturn { RandomNums(arrayOf(1, 2)) }
+            .subscribe { randomNums ->
+                for(i in randomNums.data.indices) {
+                    when(i){
+                        0 ->{
+                            if (randomNums.data[i] > 99){
+                                btn_1.text = (randomNums.data[i]/10000.0).toString()
+                            }else if (randomNums.data[i] in 10..99){
+                                btn_1.text = (randomNums.data[i]/1000.0).toString()
+                            }else{
+                                btn_1.text = (randomNums.data[i]/100.0).toString()
+                            }
+                        }
+                        1 ->{
+                            if (randomNums.data[i] > 99){
+                                btn_2.text = (randomNums.data[i]/10000.0).toString()
+                            }else if (randomNums.data[i] in 10..99){
+                                btn_2.text = (randomNums.data[i]/1000.0).toString()
+                            }else{
+                                btn_2.text = (randomNums.data[i]/100.0).toString()
+                            }
+                        }
+                    }
+                }
+                progress_bar.visibility = View.INVISIBLE
+            }
     }
 }
