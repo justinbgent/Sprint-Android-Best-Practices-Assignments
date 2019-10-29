@@ -9,25 +9,18 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     private lateinit var retrofitDisposable: Disposable
-    private lateinit var disposable: Disposable
+    private lateinit var bindingDisposable: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val obsPurchasePrice = edit_purchase_price.textChanges()
-        val obsDownPayment = edit_downpay.textChanges()
-        val obsInterestRate = edit_interest_rate.textChanges()
-        val obsLoanLength = edit_loan_length.textChanges()
-
-        val obsCombined = Observables.combineLatest(obsPurchasePrice, obsDownPayment, obsInterestRate, obsLoanLength){_,_,_,_ -> getAmortizedMortgagePayment()}
+        setBindingDisposable()
+        setRetroDisposable()
 
         btn_1.setOnClickListener {
             edit_interest_rate.setText(btn_1.text)
@@ -37,19 +30,15 @@ class MainActivity : AppCompatActivity() {
             edit_interest_rate.setText(btn_2.text)
         }
 
-        setRetroDisposable()
-
         btn_generate.setOnClickListener {
             progress_bar.visibility = View.VISIBLE
             setRetroDisposable()
         }
-
-        disposable = obsCombined.observeOn(AndroidSchedulers.mainThread()).subscribe{result -> txt_answer.text = result.toString()}
     }
 
     override fun onDestroy() {
         retrofitDisposable.dispose()
-        disposable.dispose()
+        bindingDisposable.dispose()
         super.onDestroy()
     }
 
@@ -105,5 +94,16 @@ class MainActivity : AppCompatActivity() {
                 }
                 progress_bar.visibility = View.INVISIBLE
             }
+    }
+
+    fun setBindingDisposable(){
+        val obsPurchasePrice = edit_purchase_price.textChanges()
+        val obsDownPayment = edit_downpay.textChanges()
+        val obsInterestRate = edit_interest_rate.textChanges()
+        val obsLoanLength = edit_loan_length.textChanges()
+
+        val obsCombined = Observables.combineLatest(obsPurchasePrice, obsDownPayment, obsInterestRate, obsLoanLength){_,_,_,_ -> getAmortizedMortgagePayment()}
+        //result down below is the result of the above Lambda that notes each change in EditText fields.
+        bindingDisposable = obsCombined.observeOn(AndroidSchedulers.mainThread()).subscribe{ result -> txt_answer.text = result.toString()}
     }
 }
