@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "471547216468",
+    "firebase_url": "https://crashanalytics-f4d94.firebaseio.com",
+    "project_id": "crashanalytics-f4d94",
+    "storage_bucket": "crashanalytics-f4d94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471547216468:android:6a2ef66afdec89cdc2e3c1",
+        "android_client_info": {
+          "package_name": "com.schoolwork.crashanalytics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471547216468-ojj9e314efrp8d3uog9o92mvs0sr5u42.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfVgbL_wHQdaDHkwyKhrNf7YbzQ7MkVTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471547216468-ojj9e314efrp8d3uog9o92mvs0sr5u42.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
