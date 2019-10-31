@@ -1,4 +1,4 @@
-package com.example.sprintpokemonchallenge.api
+package com.example.sprintpokemonchallenge.retrofit
 
 import com.example.sprintpokemonchallenge.model.PokemonDetail
 import retrofit2.Call

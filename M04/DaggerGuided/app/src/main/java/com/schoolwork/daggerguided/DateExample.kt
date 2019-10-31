@@ -5,7 +5,7 @@ import java.util.*
 object DateExample {
     private val date: Long = Date().time
 
-    public fun getDate(): Long {
+    fun getDate(): Long {
         return date
     }
 }

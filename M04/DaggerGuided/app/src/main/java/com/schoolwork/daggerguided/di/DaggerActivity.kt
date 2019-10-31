@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.schoolwork.daggerguided.DaggerDemoApplication
 import com.schoolwork.daggerguided.R
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_dagger.*
 import java.util.*
 import javax.inject.Inject
 

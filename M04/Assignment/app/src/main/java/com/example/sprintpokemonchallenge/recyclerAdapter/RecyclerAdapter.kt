@@ -39,16 +39,13 @@ class RecyclerAdapter(private val pokemonIndex: List<PokemonDetail>?) :
                 context.startActivity(intent)
             }
 
+            //Removes pokemon from search list upon long click
             holder.name.setOnLongClickListener{
                 searchedPokemon.remove(pokemon)
-
                 this.notifyDataSetChanged()
-                return@setOnLongClickListener true
+                true
             }
         }
-
-
-
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
