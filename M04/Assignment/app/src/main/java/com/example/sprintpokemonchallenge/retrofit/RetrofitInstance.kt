@@ -11,9 +11,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 //@Module
-class RetrofitInstance{
-    @Inject
-    constructor()
+class RetrofitInstance @Inject constructor(){
+
 
     private val BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
